@@ -1,6 +1,6 @@
 {
   "name": "@felixli-ct/opencode-dashboard",
-  "version": "0.3.8",
+  "version": "0.4.0",
   "description": "Local web dashboard for browsing OpenCode session history across projects",
   "main": "dashboard.js",
   "bin": {
@@ -16,7 +16,7 @@
     "LICENSE"
   ],
   "dependencies": {
-    "sql.js": "^1.11.0"
+    "better-sqlite3": "^12.10.0"
   },
   "keywords": [
     "opencode",

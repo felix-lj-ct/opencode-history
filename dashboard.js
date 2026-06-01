@@ -18,7 +18,7 @@ const PKG_VERSION = JSON.parse(
 
 const { PORT, HOST, SESSIONS_PER_PAGE, getConfig, setConfig, saveConfig, getLang } = require("./lib/config");
 const { findDatabase } = require("./lib/db-locator");
-const { loadData, queryMoreSessions } = require("./lib/query");
+const { loadData, queryMoreSessions, closeDb } = require("./lib/query");
 const { openTerminal } = require("./lib/terminal");
 const { buildHTML } = require("./lib/template");
 const { openBrowser, killPort } = require("./lib/browser");
@@ -92,10 +92,17 @@ function emptyData() {
 // ---------------------------------------------------------------------------
 // Helper: read JSON body from a request
 // ---------------------------------------------------------------------------
+const MAX_BODY_SIZE = 64 * 1024; // 64 KB
 function readBody(req) {
   return new Promise((resolve, reject) => {
     let body = "";
-    req.on("data", (chunk) => (body += chunk));
+    req.on("data", (chunk) => {
+      body += chunk;
+      if (body.length > MAX_BODY_SIZE) {
+        reject(new Error("Request body too large"));
+        req.destroy();
+      }
+    });
     req.on("end", () => {
       try { resolve(JSON.parse(body)); }
       catch (err) { reject(err); }
@@ -117,7 +124,7 @@ async function main() {
   if (dbPath) {
     console.log("Found database:", dbPath, `(${dbResult.source})`);
     console.log("Loading data...");
-    data = await loadData(dbPath);
+    data = loadData(dbPath);
     console.log(`Loaded ${data.projectStats.length} projects, ${data.globalStats.total_sessions} sessions`);
   } else {
     console.log("No database found. Starting with empty data.");
@@ -164,7 +171,7 @@ async function main() {
           return;
         }
 
-        const result = await queryMoreSessions(dbPath, dir, offset, limit);
+        const result = queryMoreSessions(dbPath, dir, offset, limit);
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ ok: true, html: result.rowsHTML, count: result.count }));
         return;
@@ -229,10 +236,9 @@ async function main() {
         dbResult = findDatabase();
         dbPath = dbResult.path;
         if (dbPath) {
-          const newData = await loadData(dbPath);
-          Object.assign(data, newData);
+          data = loadData(dbPath);
         } else {
-          Object.assign(data, emptyData());
+          data = emptyData();
         }
         html = buildHTML(data, dbResult, PKG_VERSION);
         console.log("DB path updated:", dbPath || "(not found)", `(${dbResult.source || "none"})`);
@@ -305,8 +311,7 @@ async function main() {
           return;
         }
         try {
-          const newData = await loadData(dbPath);
-          Object.assign(data, newData);
+          data = loadData(dbPath);
           html = buildHTML(data, dbResult, PKG_VERSION);
           res.writeHead(200, { "Content-Type": "application/json" });
           res.end(JSON.stringify({ ok: true }));
@@ -429,7 +434,12 @@ async function main() {
   });
 }
 
-// Prevent WASM or other unexpected errors from crashing the server
+// Clean up persistent DB connection on exit
+process.on("exit", () => closeDb());
+process.on("SIGINT", () => { closeDb(); process.exit(0); });
+process.on("SIGTERM", () => { closeDb(); process.exit(0); });
+
+// Prevent unexpected errors from crashing the server
 process.on("uncaughtException", (err) => {
   console.error("Uncaught exception (server still running):", err);
 });
