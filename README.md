@@ -8,7 +8,12 @@
 [![Node.js Version](https://img.shields.io/node/v/opencode-history.svg?logo=node.js)](package.json)
 [![GitHub stars](https://img.shields.io/github/stars/felix-lj-ct/opencode-history?style=social)](https://github.com/felix-lj-ct/opencode-history)
 
-> **Heads up:** this project is now also published under the shorter, easier-to-find name **[`opencode-history`](https://www.npmjs.com/package/opencode-history)**. Both packages ship the same code and version — please prefer `opencode-history` going forward. The older [`@felixli-ct/opencode-dashboard`](https://www.npmjs.com/package/@felixli-ct/opencode-dashboard) will continue to receive updates for now.
+> **📦 Package renamed:** The npm package is now **[`opencode-history`](https://www.npmjs.com/package/opencode-history)**. The previous package `@felixli-ct/opencode-dashboard` has been **deprecated** and will no longer receive updates. If you have it installed, switch with:
+>
+> ```bash
+> npm uninstall -g @felixli-ct/opencode-dashboard
+> npm install -g opencode-history
+> ```
 
 ![Dashboard overview](https://raw.githubusercontent.com/felix-lj-ct/opencode-history/main/docs/images/dashboard.png)
 
@@ -99,7 +104,7 @@ Open **Settings** (top-right gear icon) to customize:
 - **Auto-update check** — toggle on/off
 - **Database path** — point to a custom `opencode.db` location
 
-Config is stored at `~/.config/opencode-dashboard/config.json` (XDG-aware).
+Config is stored at `~/.config/opencode-history/config.json` (XDG-aware).
 
 ## Security
 
@@ -130,7 +135,7 @@ Quick dev loop:
 
 ```bash
 git clone https://github.com/felix-lj-ct/opencode-history.git
-cd opencode-dashboard
+cd opencode-history
 npm install
 node dashboard.js
 ```

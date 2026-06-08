@@ -11,9 +11,8 @@ const path = require("node:path");
 // ---------------------------------------------------------------------------
 // Package version (read once at startup)
 // ---------------------------------------------------------------------------
-// Use the new short package name for version checks and auto-updates.
-// Old scoped package (@felixli-ct/opencode-dashboard) ships the same code and
-// is kept in sync, but new installs and updates should flow through this name.
+// npm package name (used for version checks and auto-update commands).
+// The previous package @felixli-ct/opencode-dashboard has been deprecated.
 const PKG_NAME = "opencode-history";
 const PKG_VERSION = JSON.parse(
   fs.readFileSync(path.join(__dirname, "package.json"), "utf-8")

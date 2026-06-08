@@ -6,11 +6,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-06-08
+
+### Changed
+- **BREAKING — Package renamed** from `@felixli-ct/opencode-dashboard` to [`opencode-history`](https://www.npmjs.com/package/opencode-history). The old package has been deprecated on npm. Migrate with:
+  ```bash
+  npm uninstall -g @felixli-ct/opencode-dashboard
+  npm install -g opencode-history
+  ```
+- **BREAKING — Config directory moved** from `~/.config/opencode-dashboard` to `~/.config/opencode-history`. Existing users will need to re-apply settings on first launch (or manually rename the directory).
+- GitHub repository renamed from `opencode-dashboard` to `opencode-history` (old URLs still redirect).
+- Auto-update check and update command now both target `opencode-history`.
+
+### Notes
+- The CLI binary is **still** named `opencode-dashboard` for backward compatibility.
+
 ## [0.4.1] - 2026-06-08
 
 ### Added
 - Today's cost popup on the dashboard header
-- Also published as [`opencode-history`](https://www.npmjs.com/package/opencode-history) — a shorter, easier-to-discover package name (same code, same version)
 - `CHANGELOG.md` and `CONTRIBUTING.md`
 - Expanded npm keywords for better discoverability
 - Reworked README with badges, `npx` quick-start, FAQ, and screenshots
@@ -81,7 +95,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial release: project list, session drill-down, global stats, one-click resume in terminal
 
-[Unreleased]: https://github.com/felix-lj-ct/opencode-history/compare/v0.4.1...HEAD
+[Unreleased]: https://github.com/felix-lj-ct/opencode-history/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/felix-lj-ct/opencode-history/compare/v0.4.1...v0.5.0
 [0.4.1]: https://github.com/felix-lj-ct/opencode-history/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/felix-lj-ct/opencode-history/compare/v0.3.8...v0.4.0
 [0.3.8]: https://github.com/felix-lj-ct/opencode-history/compare/v0.3.6...v0.3.8
