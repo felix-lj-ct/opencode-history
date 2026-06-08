@@ -1,10 +1,10 @@
 {
   "name": "opencode-history",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Local web dashboard for browsing OpenCode session history across projects",
   "main": "dashboard.js",
   "bin": {
-    "opencode-dashboard": "dashboard.js"
+    "opencode-history": "dashboard.js"
   },
   "scripts": {
     "start": "node dashboard.js"

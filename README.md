@@ -41,10 +41,10 @@ Or install globally:
 
 ```bash
 npm install -g opencode-history
-opencode-dashboard
+opencode-history
 ```
 
-> The CLI binary is still named `opencode-dashboard` for backward compatibility.
+> **Note:** Starting in `0.5.1` the CLI binary is named `opencode-history` (matching the package name). Older versions installed it as `opencode-dashboard`; reinstall to pick up the new name.
 
 The dashboard auto-opens at <http://127.0.0.1:19860>. Press `Ctrl+C` to stop.
 

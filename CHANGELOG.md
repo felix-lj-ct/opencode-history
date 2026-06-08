@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.1] - 2026-06-08
+
+### Changed
+- **BREAKING — CLI binary renamed** from `opencode-dashboard` to `opencode-history` (now matches the npm package name). Reinstall globally to pick up the new command:
+  ```bash
+  npm install -g opencode-history
+  opencode-history
+  ```
+  The old `opencode-dashboard` command will no longer be installed in fresh installs.
+
 ## [0.5.0] - 2026-06-08
 
 ### Changed

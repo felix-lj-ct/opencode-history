@@ -38,7 +38,7 @@ lib/
 Please include:
 
 1. OS + Node version (`node -v`)
-2. OpenCode Dashboard version (`opencode-dashboard --version` or check `package.json`)
+2. OpenCode Dashboard version (`opencode-history --version` or check `package.json`)
 3. OpenCode version (the CLI you're using)
 4. Steps to reproduce
 5. Relevant output from the dashboard's terminal window
