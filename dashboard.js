@@ -18,7 +18,7 @@ const PKG_VERSION = JSON.parse(
 
 const { PORT, HOST, SESSIONS_PER_PAGE, getConfig, setConfig, saveConfig, getLang } = require("./lib/config");
 const { findDatabase } = require("./lib/db-locator");
-const { loadData, queryMoreSessions, closeDb } = require("./lib/query");
+const { loadData, queryMoreSessions, queryTodayCostDetail, closeDb } = require("./lib/query");
 const { openTerminal } = require("./lib/terminal");
 const { buildHTML } = require("./lib/template");
 const { openBrowser, killPort } = require("./lib/browser");
@@ -288,6 +288,19 @@ async function main() {
         }
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ ok: true, hiddenDirs: cfg.hiddenDirs }));
+        return;
+      }
+
+      // GET /api/today-cost-detail — today's cost breakdown by session + sub-agents
+      if (req.method === "GET" && req.url === "/api/today-cost-detail") {
+        if (!dbPath) {
+          res.writeHead(400, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({ ok: false, error: "Database not available" }));
+          return;
+        }
+        const detail = queryTodayCostDetail(dbPath);
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ ok: true, ...detail }));
         return;
       }
 
