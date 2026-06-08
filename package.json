@@ -45,12 +45,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/felix-lj-ct/opencode-dashboard.git"
+    "url": "git+https://github.com/felix-lj-ct/opencode-history.git"
   },
   "bugs": {
-    "url": "https://github.com/felix-lj-ct/opencode-dashboard/issues"
+    "url": "https://github.com/felix-lj-ct/opencode-history/issues"
   },
-  "homepage": "https://github.com/felix-lj-ct/opencode-dashboard#readme",
+  "homepage": "https://github.com/felix-lj-ct/opencode-history#readme",
   "engines": {
     "node": ">=16.0.0"
   }

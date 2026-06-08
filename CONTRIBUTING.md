@@ -5,7 +5,7 @@ Thanks for your interest in improving OpenCode Dashboard! Bug reports, feature r
 ## Quick start
 
 ```bash
-git clone https://github.com/felix-lj-ct/opencode-dashboard.git
+git clone https://github.com/felix-lj-ct/opencode-history.git
 cd opencode-dashboard
 npm install
 node dashboard.js

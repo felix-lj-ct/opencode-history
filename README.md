@@ -6,11 +6,11 @@
 [![npm downloads](https://img.shields.io/npm/dm/opencode-history.svg?color=cb3837&logo=npm)](https://www.npmjs.com/package/opencode-history)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/node/v/opencode-history.svg?logo=node.js)](package.json)
-[![GitHub stars](https://img.shields.io/github/stars/felix-lj-ct/opencode-dashboard?style=social)](https://github.com/felix-lj-ct/opencode-dashboard)
+[![GitHub stars](https://img.shields.io/github/stars/felix-lj-ct/opencode-history?style=social)](https://github.com/felix-lj-ct/opencode-history)
 
 > **Heads up:** this project is now also published under the shorter, easier-to-find name **[`opencode-history`](https://www.npmjs.com/package/opencode-history)**. Both packages ship the same code and version — please prefer `opencode-history` going forward. The older [`@felixli-ct/opencode-dashboard`](https://www.npmjs.com/package/@felixli-ct/opencode-dashboard) will continue to receive updates for now.
 
-![Dashboard overview](https://raw.githubusercontent.com/felix-lj-ct/opencode-dashboard/main/docs/images/dashboard.png)
+![Dashboard overview](https://raw.githubusercontent.com/felix-lj-ct/opencode-history/main/docs/images/dashboard.png)
 
 ## Why?
 
@@ -62,11 +62,11 @@ The dashboard auto-opens at <http://127.0.0.1:19860>. Press `Ctrl+C` to stop.
 
 ### Pick the terminal you actually use
 
-![Terminal picker](https://raw.githubusercontent.com/felix-lj-ct/opencode-dashboard/main/docs/images/terminal-picker.png)
+![Terminal picker](https://raw.githubusercontent.com/felix-lj-ct/opencode-history/main/docs/images/terminal-picker.png)
 
 ### Customize project cards & session columns
 
-![Customize project card fields and session table columns](https://raw.githubusercontent.com/felix-lj-ct/opencode-dashboard/main/docs/images/customize-fields.png)
+![Customize project card fields and session table columns](https://raw.githubusercontent.com/felix-lj-ct/opencode-history/main/docs/images/customize-fields.png)
 
 ## How It Works
 
@@ -114,7 +114,7 @@ Config is stored at `~/.config/opencode-dashboard/config.json` (XDG-aware).
 No. The DB is opened read-only.
 
 **Will it work with future OpenCode versions?**
-Schema columns are detected at runtime, so older and newer schemas both work. If something breaks, please [open an issue](https://github.com/felix-lj-ct/opencode-dashboard/issues).
+Schema columns are detected at runtime, so older and newer schemas both work. If something breaks, please [open an issue](https://github.com/felix-lj-ct/opencode-history/issues).
 
 **Can I run it on a server / remote machine?**
 By design it binds to localhost only. If you need remote access, use SSH port forwarding: `ssh -L 19860:127.0.0.1:19860 your-server`.
@@ -129,7 +129,7 @@ Issues and PRs welcome! See [CONTRIBUTING.md](CONTRIBUTING.md).
 Quick dev loop:
 
 ```bash
-git clone https://github.com/felix-lj-ct/opencode-dashboard.git
+git clone https://github.com/felix-lj-ct/opencode-history.git
 cd opencode-dashboard
 npm install
 node dashboard.js
